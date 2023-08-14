@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:getx/carts_screen.dart';
 import 'package:getx/checkout_screen.dart';
 import 'package:get/get.dart';
+import 'package:getx/counterScreen.dart';
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
+
+  final Countcontrol counter = Get.put(Countcontrol());
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,11 @@ class HomeScreen extends StatelessWidget {
             //get navigation
            Get.off(checkout(massage: 'hello from home',));
           }, child: const Text('Checkout')),
+          
+          ElevatedButton(onPressed: (){
+            counter.increment();
+            Get.to(CounterScreen());
+          }, child: Text('Counter Screen'))
         ],
       ),),
     );
